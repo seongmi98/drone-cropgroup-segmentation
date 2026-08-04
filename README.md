@@ -40,9 +40,19 @@ drone-cropgroup-segmentation/
 │   ├── segnext.yaml              # placeholder (MMSegmentation baseline)
 │   └── deeplabv3plus.yaml
 ├── datasets/                     # data PREPARATION scripts only (no real data)
+│   ├── README.md                 # full pipeline order
 │   ├── make_master_5fold.py      # build master k-fold split
 │   ├── remap_5to3class.py        # class remap / keep target crops, bg=0
-│   └── background_only_sampling.py  # negative-sample background labeling (template)
+│   ├── background_only_sampling.py  # negative-sample background labeling (template)
+│   └── preprocessing/            # raw COCO -> panoptic -> semantic + QC
+│       ├── filter_coco_classes.py
+│       ├── merge_coco_json.py
+│       ├── undersample.py
+│       ├── instance_to_panoptic.py
+│       ├── instance_json_to_panoptic_json.py
+│       ├── panoptic_to_semantic.py
+│       ├── visualize_annotations.py
+│       └── analyze_class_distribution.py
 ├── tools/
 │   ├── train_net.py              # Mask2Former training (Detectron2)
 │   ├── eval_semantic.py          # semantic-segmentation evaluation
@@ -90,9 +100,13 @@ See https://github.com/facebookresearch/Mask2Former for framework details.
 > The scripts here are templates/entry points; no dataset is bundled.
 
 ```bash
-# 1) Prepare a k-fold split and remap classes
-python datasets/make_master_5fold.py
+# 1) Prepare data: raw COCO -> semantic annotations -> k-fold split
+#    (full step-by-step order in datasets/README.md)
+python datasets/preprocessing/filter_coco_classes.py ...
+python datasets/preprocessing/merge_coco_json.py
+# ... instance_to_panoptic -> panoptic_to_semantic ...
 python datasets/remap_5to3class.py
+python datasets/make_master_5fold.py
 python datasets/background_only_sampling.py --bg-ratio 0.10 ...
 
 # 2) Train
