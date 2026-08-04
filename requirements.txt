@@ -1,0 +1,27 @@
+# Core deep-learning stack
+# Mask2Former requires PyTorch >= 1.9 and a matching torchvision build.
+# Install a CUDA build appropriate to your machine from https://pytorch.org
+torch>=1.9.0
+torchvision>=0.10.0
+
+# Detectron2 and Mask2Former are installed FROM SOURCE (not on PyPI).
+#   1) pip install 'git+https://github.com/facebookresearch/detectron2.git'
+#   2) clone Mask2Former and build its custom CUDA ops:
+#      cd Mask2Former/mask2former/modeling/pixel_decoder/ops && sh make.sh
+# See: https://github.com/facebookresearch/Mask2Former/blob/main/INSTALL.md
+
+# Common dependencies
+opencv-python
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+pillow
+pycocotools
+tqdm
+pyyaml
+
+# SegNeXt baseline (optional; MMSegmentation framework)
+# mmcv
+# mmsegmentation

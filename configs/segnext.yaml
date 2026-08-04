@@ -1,0 +1,13 @@
+# SegNeXt configuration (placeholder)
+#
+# NOTE: SegNeXt is used only as a reference baseline for the 5-class,
+# full-altitude architecture comparison (see results/architecture.csv).
+# It is trained with the MMSegmentation framework, not Detectron2.
+#
+# This file is a placeholder. Replace it with your actual SegNeXt config
+# (e.g., an MMSegmentation `segnext_mscan-t_*.py` config adapted to the
+# 5-class crop setting: background + cabbage + radish + onion + garlic).
+#
+# Reference: https://github.com/Visual-Attention-Network/SegNeXt
+#
+# num_classes: 5   # background, cabbage, radish, onion, garlic

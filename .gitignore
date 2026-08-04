@@ -1,0 +1,48 @@
+# === Data (NEVER commit) ===
+data/
+datasets/**/*.json
+datasets/**/*.jpg
+datasets/**/*.jpeg
+datasets/**/*.png
+datasets/**/*.tif
+datasets/**/*.tiff
+*.coco.json
+image_lists/
+
+# === Model weights / checkpoints (NEVER commit) ===
+*.pth
+*.pt
+*.ckpt
+*.pkl
+*.bin
+output/
+outputs/
+output_result*/
+runs/
+checkpoints/
+weights/
+
+# === Logs & caches ===
+*.log
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.cache/
+
+# === Environment ===
+.venv/
+venv/
+env/
+.env
+
+# === OS / editor ===
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Result CSVs and result figures are intentionally NOT included in this
+# portfolio version (withheld pending publication).
+results/*.csv
+figures/*.png
+figures/*.pdf
